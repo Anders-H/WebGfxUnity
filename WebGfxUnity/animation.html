@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Tripple sine!</title>
+</head>
+<body>
+    <p>
+        <canvas id="c" width="600" height="500" style="background-color: #a9a9a9;">
+        </canvas>
+    </p>
+<script>
+    var cx = 300;
+    var cy = 250;
+    var ctx;
+    var lastbary;
+    var counter = 0;
+    window.onload = function () {
+        ctx = document.getElementById("c").getContext("2d");
+        window.requestAnimationFrame(draw);
+    };
+
+    var draw = function () {
+        counter++;
+
+        ctx.fillStyle = "#000000";
+        ctx.fillRect(0, 0, 600, 500);
+
+        var xrad1 = 100 + Math.sin(counter / 60) * 70;
+        var yrad1 = 70 + Math.cos(counter / 55) * 60;
+        var bary = 250 + Math.cos(counter / 54) * 220;
+        var infront = bary > lastbary;
+
+        if (!infront) {
+            ctx.fillStyle = "#1111dd";
+            ctx.fillRect(0, bary - 18, 600, 36);
+        }
+
+        ctx.fillStyle = "#ffffff";
+        for (var i = 0; i < 50; i++) {
+
+            var c = counter + (i * 6);
+
+            var x = cx + Math.sin(c / 50) * xrad1;
+            x += Math.sin(c / 20) * 40;
+            x += Math.sin(c / 23) * 20 + i;
+
+            var y = cy + Math.cos(c / 54) * yrad1;
+            y += Math.cos(c / 30) * 30;
+            y += Math.cos(c / 24) * 15 + i;
+
+            ctx.fillRect(x - 1, y - 1, 2, 2);
+        }
+
+        if (infront) {
+            ctx.fillStyle = "#2222ff";
+            ctx.fillRect(0, bary - 20, 600, 40);
+        }
+
+        lastbary = bary;
+        window.requestAnimationFrame(draw);
+    };
+</script>
+</body>
+</html>

@@ -1,4 +1,6 @@
-﻿using WebGfxUnity.Shapes;
+﻿using System.Drawing;
+using WebGfxUnity.Shapes;
+using Rectangle = WebGfxUnity.Shapes.Rectangle;
 
 namespace WebGfxUnity.Render
 {
@@ -48,6 +50,22 @@ namespace WebGfxUnity.Render
 
             if (circle.Stroke)
                 return $@"<circle cx=""{circle.Position.X}"" cy=""{circle.Position.Y}"" r=""{circle.Radius}"" stroke=""{ColorToHtml(StrokeColor)}"" stroke-width=""{StrokeWidth}"" fill=""none"" />";
+
+            return "";
+        }
+
+        protected override string Render(Rectangle rectangle)
+        {
+            var r = rectangle.Rectangle;
+
+            if (rectangle.Fill && rectangle.Stroke)
+                return $@"<rect x=""{r.X}"" y=""{r.Y}"" width=""{r.Width}"" height=""{r.Height}"" style=""fill:{ColorToHtml(FillColor)};stroke:{ColorToHtml(StrokeColor)};stroke-width:{StrokeWidth};"" />";
+
+            if (rectangle.Fill)
+                return $@"<rect x=""{r.X}"" y=""{r.Y}"" width=""{r.Width}"" height=""{r.Height}"" style=""fill:{ColorToHtml(FillColor)};"" />";
+            
+            if (rectangle.Stroke)
+                return $@"<rect x=""{r.X}"" y=""{r.Y}"" width=""{r.Width}"" height=""{r.Height}"" style=""stroke:{ColorToHtml(StrokeColor)};stroke-width:{StrokeWidth};"" />";
 
             return "";
         }

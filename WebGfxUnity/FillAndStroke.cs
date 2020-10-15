@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using WebGfxUnity.Shapes;
+using Rect = System.Drawing.Rectangle;
 
 namespace WebGfxUnity
 {
@@ -11,11 +12,11 @@ namespace WebGfxUnity
             image.FillColor(Color.Green);
             image.StrokeColor(Color.Yellow);
             image.StrokeWidth(3);
-            image.Elements.Add(new AreaCircle(new Rectangle(5, 5, 100, 100), true, true));
+            image.Elements.Add(new AreaCircle(new Rect(5, 5, 100, 100), true, true));
             image.FillColor(Color.Red);
-            image.Elements.Add(new AreaCircle(new Rectangle(50, 5, 100, 100), true, false));
+            image.Elements.Add(new AreaCircle(new Rect(50, 5, 100, 100), true, false));
             image.StrokeColor(Color.White);
-            image.Elements.Add(new AreaCircle(new Rectangle(100, 5, 100, 100), false, true));
+            image.Elements.Add(new AreaCircle(new Rect(100, 5, 100, 100), false, true));
             return image;
         }
     }

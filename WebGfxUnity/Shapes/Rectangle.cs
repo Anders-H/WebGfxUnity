@@ -3,9 +3,9 @@ using Rect = System.Drawing.Rectangle;
 
 namespace WebGfxUnity.Shapes
 {
-    public class AreaCircle : AreaShape
+    public class Rectangle : AreaShape
     {
-        public AreaCircle(Rect rectangle, bool fill, bool stroke) : base(rectangle, fill, stroke)
+        public Rectangle(Rect rectangle, bool fill, bool stroke) : base(rectangle, fill, stroke)
         {
         }
     }

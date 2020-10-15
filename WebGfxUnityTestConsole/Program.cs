@@ -11,7 +11,8 @@ namespace WebGfxUnityTestConsole
 
             //var image = AreaCircleVsRadiusCircle.Create();
             //var image = FillAndStroke.Create();
-            var image = Polygons.Create();
+            //var image = Polygons.Create();
+            var image = ProtoDiagram.Create();
 
             var canvasRenderer = new CanvasCodeRenderer("c");
             var svgRenderer = new SvgCodeRenderer("s");

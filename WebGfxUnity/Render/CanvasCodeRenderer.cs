@@ -63,6 +63,23 @@ ctx.lineWidth = {StrokeWidth};
             return s.ToString();
         }
 
+        protected override string Render(Rectangle rectangle)
+        {
+            var s = new StringBuilder();
+
+            s.AppendLine("ctx.beginPath();");
+            var r = rectangle.Rectangle;
+            s.AppendLine($"ctx.rect({r.X}, {r.Y}, {r.Width}, {r.Height});");
+
+            if (rectangle.Fill)
+                s.AppendLine("ctx.fill();");
+
+            if (rectangle.Stroke)
+                s.AppendLine("ctx.stroke();");
+
+            return s.ToString();
+        }
+
         protected override string Render(Polygon polygon)
         {
             if (polygon.Points.Count <= 0)

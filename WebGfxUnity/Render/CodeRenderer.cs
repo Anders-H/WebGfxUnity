@@ -2,6 +2,7 @@
 using System.Text;
 using WebGfxUnity.Shapes;
 using WebGfxUnity.Shapes.ShapeBase;
+using Rectangle = WebGfxUnity.Shapes.Rectangle;
 
 namespace WebGfxUnity.Render
 {
@@ -48,6 +49,8 @@ namespace WebGfxUnity.Render
                     s.AppendLine(Render(c1));
                 else if (element is RadiusCircle c2)
                     s.AppendLine(Render(c2));
+                else if (element is Rectangle r1)
+                    s.AppendLine(Render(r1));
                 else if (element is Polygon p1)
                     s.AppendLine(Render(p1));
             }
@@ -69,6 +72,8 @@ namespace WebGfxUnity.Render
         protected abstract string Render(AreaCircle circle);
 
         protected abstract string Render(RadiusCircle circle);
+
+        protected abstract string Render(Rectangle rectangle);
 
         protected abstract string Render(Polygon polygon);
 
